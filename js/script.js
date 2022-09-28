@@ -315,21 +315,21 @@ dataItem = `
 let getData =(obj)=>
 {
 
-    for(let i=0 ; i<obj.length;i++)
-{
+   for(let i of obj)
+    {
     var row =`<tr> 
-    <td>${obj[i].id}</td>
-    <td>${obj[i].name}</td>
-    <td>${obj[i].surname}</td>
-    <td>${obj[i].city}</td>
+    <td>${i.id}</td>
+    <td>${i.name}</td>
+    <td>${i.surname}</td>
+    <td>${i.city}</td>
     <td>
     <input class="update-button" id="update-button" type="button" value="Update" >
     <input class="update-button" id="delete-button" type="button" value="Delete" >
-</td>
+    </td>
     </tr>`  
     table.innerHTML+=row
     
-  
+
 }
 }
 
