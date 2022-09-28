@@ -1,0 +1,59 @@
+
+.container
+{
+    width: 600px;
+    height: 300px;
+    padding: 20px;
+    position: relative;
+    margin: auto;
+}
+
+table, td, th 
+{  
+    border: 1px solid #ddd;
+    text-align: center;
+    border-collapse: collapse;
+   
+}
+  
+table 
+{
+    width: 100%;
+}
+
+  
+th, td 
+{
+    padding: 15px;
+}
+
+table td input 
+{
+border: none;
+color: white;
+padding: 18px;
+text-align: center;
+font-size: 11px;
+}
+
+#update-button 
+{
+    background-color: green;
+    
+}
+#delete-button
+{
+    background-color: red;
+    
+
+}
+
+tr:nth-child(even) {
+    background-color: beige;
+  }
+
+  tr:hover 
+  {
+    background-color: coral;
+  }
+
