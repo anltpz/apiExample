@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="card-header">
+        <h3 class="cart-title" id="title">Todo App</h3>
+    </div>
+    <ul class="tast-list">
+        <li>todo 1</li>
+        <li>todo 2</li>
+        <li>todo 3</li>
+        <li>todo 4</li>
+    </ul>
+
+    <script>
+        let sonuc;
+      sonuc =  document.getElementById("title");
+      sonuc =  document.getElementById("title").id;
+      sonuc =  document.getElementById("title").className;
+      sonuc =  document.getElementById("title").classList;
+      document.getElementById("title").style.fontSize="30px";
+      document.getElementById("title").style.color="red";
+      //document.getElementById("title").style.display="none";
+      document.getElementById("title").innerText="Todo test"
+      document.getElementById("title").innerHTML="<p> Todo App </p>";
+      sonuc =  document.querySelector("#title") // id si title olan ilk elemanı sec
+      sonuc=  document.querySelector(".card-header") // classı card header olan elemana ulas
+      sonuc=  document.querySelector("li") // li elemanını getir dedigimde buldugu ilk li elemanını getirir
+      sonuc=  document.querySelector("li:first-child") // css özelliklerini kullanabiliyoruz 
+      sonuc=  document.querySelector("li:nth-child(1)") // index numarasına göre child lardan istedigimi alabilirim
+
+
+
+      console.log(sonuc)
+    </script>
+</body>
+</html>

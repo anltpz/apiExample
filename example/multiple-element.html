@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul id="task-list">
+        <li class="task">Görev 1</li>
+        <li class="task">Görev 2</li>
+        <li class="task">Görev 3</li>
+    </ul>
+    
+    <ul id="task-list2">
+        <li>Görev 1</li>
+        <li>Görev 2</li>
+        <li>Görev 3</li>
+        <li>Görev 4</li>
+    </ul>
+
+    <script>
+        let sonuc;
+      sonuc =  document.getElementsByClassName("task");
+      sonuc =  document.getElementsByTagName("li");
+      ul =document.getElementById("task-list2");
+      tasklist =ul.getElementsByTagName("li");
+      //ul elemanın id sini alıp onun altındaki tag elemanlarını dolasabiliriz
+
+      tasklist=document.querySelectorAll("#task-list2 li") //task list elemanını altındaki li elemanlarına ulasır
+      
+      for(let task of sonuc)
+      {
+        console.log(task)
+      }
+      // for of diyerek elemanlara ulasabiliriz 
+      // for in diyerek indexlere ulasırız
+      for(let task2 of tasklist )
+      {
+        task2.style.color ="purple";
+        task2.style.fontSize="22px"
+      //  task.innerText ="Item"
+      }
+      
+
+
+
+
+      console.log(sonuc);
+    </script>
+</body>
+</html>
