@@ -27,7 +27,7 @@ th, td
     padding: 15px;
 }
 
-table td input 
+table td button 
 {
 border: none;
 color: white;
@@ -39,6 +39,7 @@ font-size: 11px;
 #update-button 
 {
     background-color: green;
+    text-decoration: dotted;
     
 }
 #delete-button
@@ -57,3 +58,18 @@ tr:nth-child(even) {
     background-color: coral;
   }
 
+.add-user ,.refresh
+{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.add-user:hover,.refresh:hover
+{
+    background-color: blueviolet;
+}
