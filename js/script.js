@@ -13,12 +13,12 @@ const getAllDataBase= async(url)=>
         dataObject(data)
     }
     catch (e) {
-        console.log("Error found", e.message);
-        throw e;
+        throw new Error("Error found", e.message);
     }        
 }
 let dataObject =(obj)=>
 {
+    
    for(let i of obj)
     {
     var row =`<tr> 
@@ -44,7 +44,7 @@ let dataObject =(obj)=>
 
 const getAllData= async()=>
 {
-  getAllDataBase(url)
+ await getAllDataBase(url)
         
 }
 getAllData()
@@ -68,15 +68,27 @@ getAllData()
 // console.log(getUserDataId(2).then(x =>{console.log(x.name)}))
 //--------------------------------------------------------------
 //Post request  
-  function postUser()
- {
- return fetch(url, {
-     method:'POST',
-   
 
+const postUserFetch=()=>
+{
+    const requestOptions= 
+    {
+        method: 'POST',
+    }
+    return fetch(url, requestOptions)
+}
 
- }).then(response =>response.json())
-
+const  postUser=async ()=>
+{
+    try
+    {
+        const response = await postUserFetch()
+        return await response.json()
+    }
+    catch(e)
+    {
+        throw new Error("Error post user",e)
+    }
  }
 
 //--------------------------------------------------------------
@@ -88,16 +100,24 @@ const userDeleteFetch=(Id)=>
     const requestOptions={
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
-         body: JSON.stringify({ title: 'Fetch Detele Request Example' })
+        body: JSON.stringify({ title: 'Fetch Detele Request Example' })
     }
     return fetch(url + `/` + Id,requestOptions)
 }
+
  const userDelete=async(Id)=>
- {
-    
-     const response = await userDeleteFetch(Id)
-     return await response.json()
- }
+{
+    try
+    {
+        const response = await userDeleteFetch(Id)
+        return await response.json()
+    }
+    catch(e)
+    {
+        throw new Error("User delete error",e)
+    }
+  
+}
 
 //  userDelete(2).then(data=>console.log(data))
 //  .catch(error=>console.log(error))
@@ -106,21 +126,23 @@ const userDeleteFetch=(Id)=>
 const deleteClick=(Id)=>
 {
     userDelete(Id);
-   
+    getAllData();
 }
 //--------------------------------------------------------------
 //update funciton 
-
-const updateUser= async(Id)=>
+const updateUserFetch=()=>
 {
     const requestOptions = {
         method:'PUT',
-        headers: { 'Content-Type': 'application/json' },
-         body: JSON.stringify({ title: 'Fetch PUT Request Example' })
     }
+    return fetch(url + `/` + Id, requestOptions);
+}
+
+const updateUser= async(Id)=>
+{
     try
     {
-        const response = await fetch(url + `/` + Id, requestOptions);
+        const response = await updateUserFetch()
         return await response.json()
     }
     catch(e)
@@ -128,7 +150,6 @@ const updateUser= async(Id)=>
 
         throw new Error("Error updateUser",e)
     }
-    
 }
 
 const updateUserClick=(Id)=>
@@ -145,12 +166,10 @@ const userAddClick=()=>
 const refreshClick=()=>
 {
     refresh()
-
 }
 
 const refresh=()=>
 {
-
     location.reload();
 }
 
