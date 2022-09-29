@@ -1,17 +1,20 @@
-const users =document.getElementsByClassName("users")
-const username =document.getElementById("req8")
-const table =document.getElementById("users")
-
-
-    
-
-// }
-// }
-
-// getData(obj)
-
 
 const userListData =document.getElementById("users")
+const url ="https://63340612433198e79dcddf72.mockapi.io/api/users"
+
+//Method Get all data
+//---------------------------------------------------------------
+const getAllDataBase= async(url)=>
+{
+    try {
+        const data = await (await fetch(url)).json()
+        dataObject(data)
+    }
+    catch (e) {
+        console.log("Error found", e.message);
+        throw e;
+    }        
+}
 let dataObject =(obj)=>
 {
    for(let i of obj)
@@ -27,24 +30,71 @@ let dataObject =(obj)=>
 </td>
     </tr>`  
     userListData.innerHTML+=row
-    
-
-}
-}
+   
+}}
+//---------------------------------------------------------------
 
 const getAllData= async()=>
 {
-    const data = await (await fetch("https://63340612433198e79dcddf72.mockapi.io/api/users")).json()
-   typeof(data)
-    const asArray =Object.entries(data);
-
-    dataObject(data)
+  getAllDataBase(url)
         
-    
+}
+getAllData()
 
+//---------------------------------------------------------------
+// Method Get user get 
+const getUserId=(Id)=> {
+    return fetch(url+"/"+Id);
 }
 
-getAllData()
+async function getUserDataId(userId) {
+    try {
+        const repo = await getUserId(userId);
+        return repo.json();
+    }
+    catch (e) {
+        console.log("Error found", e.message);
+        throw e;
+    }
+}
+console.log(getUserDataId(2).then(x =>{console.log(x.name)}))
+//--------------------------------------------------------------
+//Post request  
+//  function postUser()
+// {
+// return fetch(url, {
+//     method:'POST',
+   
+
+// }).then(response =>response.json())
+
+// }
+// postUser().then(data =>console.log(data))
+// .catch(error=>console.error(error))
+//--------------------------------------------------------------
+
+
+//Delete User
+
+// function postDeletUserId(Id)
+// {
+//     return fetch(url+`/`+Id,{
+//         method:"DELETE",
+
+//     }).then(response =>response.json())
+// }
+
+// postDeletUserId(5).then(data=>console.log(data))
+// .catch(error=>console.log(error))
+//--------------------------------------------------------------
+
+
+
+
+
+
+
+
 
 
 
